@@ -5,13 +5,14 @@ import java.util.Queue;
 
 public class LuggageCompartment {
     private static final int COUNT_SUITCASE = 20;
-    private final Worker[] workers = new Worker[3];
+    private static final int COUNT_WORKERS = 3;
+    private final Worker[] workers = new Worker[COUNT_WORKERS];
     private final Queue<Suitcase> suitcases = new ArrayDeque<>();
 
-    public LuggageCompartment(String name1, String name2, String name3) {
-        workers[0] = new Worker(name1);
-        workers[1] = new Worker(name2);
-        workers[2] = new Worker(name3);
+    public LuggageCompartment(String... names) {
+        for (int i = 0; i < names.length; i++) {
+            workers[i] = new Worker(names[i]);
+        }
     }
 
     public void arrivalPlane(String flightNumber) {
@@ -23,7 +24,7 @@ public class LuggageCompartment {
     public void unload() {
         int i = 0;
         while (!suitcases.isEmpty()) {
-            workers[i % 3].throwLuggageWithShout(suitcases);
+            workers[i % COUNT_WORKERS].throwLuggageWithShout(suitcases);
             i++;
         }
     }
