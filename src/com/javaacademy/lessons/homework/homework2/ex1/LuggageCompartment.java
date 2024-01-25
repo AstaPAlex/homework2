@@ -4,6 +4,7 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 
 public class LuggageCompartment {
+    private static final int COUNT_SUITCASE = 20;
     private final Worker[] workers = new Worker[3];
     private final Queue<Suitcase> suitcases = new ArrayDeque<>();
 
@@ -14,7 +15,7 @@ public class LuggageCompartment {
     }
 
     public void arrivalPlane(String flightNumber) {
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < COUNT_SUITCASE; i++) {
             suitcases.offer(new Suitcase(flightNumber));
         }
     }
